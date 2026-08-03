@@ -183,6 +183,59 @@ a{color:inherit;}
 @media (max-width:880px){.product-grid{grid-template-columns:1fr;}}
 
 /* =========================================================
+   SHRINE — deliberately out of place. wrong font, wrong
+   palette, wrong tone for a security-vault brochure site.
+   ========================================================= */
+:root{
+  --gold:#B99A4E;
+  --gold-dim:#7A6534;
+  --shrine-bg:#050506;
+}
+.shrine{
+  background:var(--shrine-bg);
+  color:var(--gold);
+  padding:110px 0 100px;
+  text-align:center;
+  border-top:1px solid var(--gold-dim);
+  border-bottom:1px solid var(--gold-dim);
+}
+.shrine-wrap{max-width:640px;margin:0 auto;padding:0 28px;}
+.shrine-eyebrow{
+  font-family:var(--font-mono);letter-spacing:.3em;text-transform:uppercase;
+  font-size:.68rem;color:var(--gold-dim);margin:0 0 40px;
+}
+.shrine-name-block{display:flex;flex-direction:column;align-items:center;gap:10px;margin-bottom:10px;}
+.shrine-name-bar{
+  display:block;width:220px;height:26px;background:var(--gold);
+  opacity:.92;border-radius:2px;
+}
+.shrine-name-caption{
+  font-family:var(--font-mono);font-size:.68rem;color:var(--gold-dim);letter-spacing:.04em;
+}
+.shrine-role{
+  font-family:'Cormorant Garamond', serif;font-style:italic;font-size:1.2rem;
+  color:var(--gold);margin:18px 0 34px;letter-spacing:.02em;
+}
+.shrine-bio{
+  font-family:var(--font-body);font-size:.92rem;line-height:1.7;color:#8A754A;
+  max-width:48ch;margin:0 auto 44px;
+}
+.shrine-wreath{color:var(--gold-dim);display:flex;justify-content:center;margin-bottom:44px;}
+.shrine-inscriptions{display:flex;flex-direction:column;gap:34px;margin-bottom:52px;}
+.shrine-inscriptions blockquote{
+  margin:0;font-family:'Cormorant Garamond', serif;font-weight:500;
+  font-size:1.4rem;line-height:1.45;color:var(--gold);
+}
+.shrine-inscriptions cite{
+  display:block;font-family:var(--font-mono);font-style:normal;font-size:.65rem;
+  letter-spacing:.1em;text-transform:uppercase;color:var(--gold-dim);margin-top:12px;
+}
+.shrine-note{
+  font-family:var(--font-mono);font-size:.72rem;color:var(--gold-dim);
+  border-top:1px solid var(--gold-dim);padding-top:24px;
+}
+
+/* =========================================================
    SECURITY
    ========================================================= */
 .security{background:var(--steel-100);padding:84px 0;}
