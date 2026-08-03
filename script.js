@@ -99,7 +99,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   /* ---- tab title, when you look away ---- */
   const originalTitle = document.title;
-  const awayTitles = ['still there?', 'Locked Away', 'come back'];
+  const awayTitles = ['still there?', 'Locked Away', 'look closer'];
   let awayIndex = 0;
   window.addEventListener('blur', () => {
     document.title = awayTitles[awayIndex % awayTitles.length];
@@ -113,13 +113,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
 /* ==========================================================
    for whoever is reading this file directly —
-   the maintenance log is in index.html, near the closing
-   </body> tag. it wasn't removed before this went live.
-   that was on purpose.
-
-   ticket #0007 — audio recovered from Vault 07:
-   https://drive.google.com/PASTE_YOUR_SHARE_LINK_HERE
+   client file 0700 is not something we'd normally leave in
+   a production build. it wasn't removed before this went
+   live. that was on purpose. check index.html — every
+   section has something in it that isn't quite corporate
+   copy. the last one is in a comment near the closing
+   </body> tag, and it isn't in plain text.
    ========================================================== */
 console.log('%cLOCKED AWAY', 'font-family:monospace;font-size:20px;color:#17296B;font-weight:bold;');
-console.log('%cbuild v4.1.7-stable — facility sub-level access logged', 'font-family:monospace;color:#9FADC4;');
-console.log('%cticket #0007 is still open. check the bottom of index.html.', 'font-family:monospace;color:#B4182B;');
+console.log('%cbuild v4.1.7-stable — estate archive access logged', 'font-family:monospace;color:#9FADC4;');
+console.log('%cclient file 0700 is still open. read the page slowly.', 'font-family:monospace;color:#B4182B;');
