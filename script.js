@@ -10,8 +10,12 @@ document.addEventListener('DOMContentLoaded', () => {
   const ticks = document.getElementById('dial-ticks');
   const hand = document.getElementById('dial-hand');
   const glitchSpan = document.getElementById('dial-caption-glitch');
+  
+  // Standard dial numbers
   const NUMS = ['0','5','10','15','20','25','30','35','40','45','50','55'];
-  const GLYPHS = ['0','5','10','15','20','25','30','35','40','45','50','55','7','?','07'];
+  
+  // Glitched dial numbers revealing the Caesar cipher keys (3, 7, 14)
+  const GLYPHS = ['3','7','14','3','7','14','3','7','14','3','7','14'];
 
   function drawTicks(labels){
     ticks.innerHTML = '';
@@ -40,7 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
   setInterval(() => {
     if (Math.random() < 0.12) {
       drawTicks(GLYPHS);
-      if (glitchSpan) glitchSpan.textContent = 'it does something.';
+      if (glitchSpan) glitchSpan.textContent = 'it unlocks everything.';
       setTimeout(() => {
         drawTicks(NUMS);
         if (glitchSpan) glitchSpan.textContent = '';
@@ -99,7 +103,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   /* ---- tab title, when you look away ---- */
   const originalTitle = document.title;
-  const awayTitles = ['still there?', 'Locked Away', 'look closer'];
+  // One of the numeric keys (7) appears when the user tabs away
+  const awayTitles = ['still there?', '[ SHIFT : 7 ]', 'look closer'];
   let awayIndex = 0;
   window.addEventListener('blur', () => {
     document.title = awayTitles[awayIndex % awayTitles.length];
