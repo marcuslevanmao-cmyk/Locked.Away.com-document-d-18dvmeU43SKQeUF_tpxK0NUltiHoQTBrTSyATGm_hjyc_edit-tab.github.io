@@ -5,20 +5,17 @@
 
 document.addEventListener('DOMContentLoaded', () => {
 
-  /* ---- combination dial & countdown anomaly ---- */
   const dial = document.getElementById('dial');
   const ticks = document.getElementById('dial-ticks');
   const hand = document.getElementById('dial-hand');
   const glitchSpan = document.getElementById('dial-caption-glitch');
   const timerEl = document.getElementById('sync-timer');
   
-  // Standard dial numbers
   const NUMS = ['0','5','10','15','20','25','30','35','40','45','50','55'];
   
-  // Glitched dial numbers revealing the Caesar cipher keys (3, 7, 14)
-  const GLYPHS = ['3','7','14','3','7','14','3','7','14','3','7','14'];
+  const GLYPHS = ['3','7','14'];
 
-  function drawTicks(labels){
+  function drawTicks(labels, isGlitch = false){
     ticks.innerHTML = '';
     labels.forEach((n, i) => {
       const angle = (i / labels.length) * Math.PI * 2 - Math.PI / 2;
@@ -27,10 +24,19 @@ document.addEventListener('DOMContentLoaded', () => {
       const t = document.createElementNS('http://www.w3.org/2000/svg', 'text');
       t.setAttribute('x', x);
       t.setAttribute('y', y);
+      
+      if (isGlitch) {
+        t.setAttribute('fill', '#39FF88');
+        t.setAttribute('font-weight', 'bold');
+      } else {
+        t.setAttribute('fill', '#C9D2DC');
+      }
+      
       t.textContent = n;
       ticks.appendChild(t);
     });
   }
+  
   drawTicks(NUMS);
 
   let rotation = 0;
@@ -41,33 +47,27 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // The 45-second countdown timer logic
   let timeLeft = 45;
   setInterval(() => {
     timeLeft--;
     
-    // Update the tiny timer in the bottom right corner
     if (timerEl) {
       timerEl.textContent = timeLeft.toString().padStart(2, '0');
     }
 
-    // When the timer hits 0, trigger the anomaly
     if (timeLeft <= 0) {
-      drawTicks(GLYPHS);
+      drawTicks(GLYPHS, true); 
       if (glitchSpan) glitchSpan.textContent = 'it unlocks everything.';
       
-      // Reset the dial back to normal after exactly 1.5 seconds
       setTimeout(() => {
-        drawTicks(NUMS);
+        drawTicks(NUMS, false);
         if (glitchSpan) glitchSpan.textContent = '';
       }, 1500);
 
-      // Restart the countdown clock
       timeLeft = 45;
     }
   }, 1000);
 
-  /* ---- stat counters ---- */
   const statEls = document.querySelectorAll('.stat-num');
   const statObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
@@ -90,8 +90,6 @@ document.addEventListener('DOMContentLoaded', () => {
   }, { threshold: 0.5 });
   statEls.forEach(el => statObserver.observe(el));
 
-  // the "reported breaches" counter is supposed to always read 0.
-  // once in a while, for under half a second, it doesn't.
   const breaches = document.getElementById('stat-breaches');
   if (breaches) {
     setInterval(() => {
@@ -103,7 +101,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 9000);
   }
 
-  /* ---- footer year, mostly correct ---- */
   const footerYear = document.getElementById('footer-year');
   if (footerYear) {
     const correct = new Date().getFullYear().toString();
@@ -116,9 +113,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 11000);
   }
 
-  /* ---- tab title, when you look away ---- */
   const originalTitle = document.title;
-  // One of the numeric keys (7) appears when the user tabs away
   const awayTitles = ['still there?', '[ SHIFT : 7 ]', 'look closer'];
   let awayIndex = 0;
   window.addEventListener('blur', () => {
@@ -131,15 +126,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
 });
 
-/* ==========================================================
-   for whoever is reading this file directly —
-   client file 0700 is not something we'd normally leave in
-   a production build. it wasn't removed before this went
-   live. that was on purpose. check index.html — every
-   section has something in it that isn't quite corporate
-   copy. the last one is in a comment near the closing
-   </body> tag, and it isn't in plain text.
-   ========================================================== */
 console.log('%cLOCKED AWAY', 'font-family:monospace;font-size:20px;color:#17296B;font-weight:bold;');
 console.log('%cbuild v4.1.7-stable — estate archive access logged', 'font-family:monospace;color:#9FADC4;');
 console.log('%cclient file 0700 is still open. read the page slowly.', 'font-family:monospace;color:#B4182B;');
