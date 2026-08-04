@@ -5,11 +5,12 @@
 
 document.addEventListener('DOMContentLoaded', () => {
 
-  /* ---- combination dial ---- */
+  /* ---- combination dial & countdown anomaly ---- */
   const dial = document.getElementById('dial');
   const ticks = document.getElementById('dial-ticks');
   const hand = document.getElementById('dial-hand');
   const glitchSpan = document.getElementById('dial-caption-glitch');
+  const timerEl = document.getElementById('sync-timer');
   
   // Standard dial numbers
   const NUMS = ['0','5','10','15','20','25','30','35','40','45','50','55'];
@@ -40,17 +41,31 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // every so often, the dial face briefly relabels itself. it relabels back.
+  // The 45-second countdown timer logic
+  let timeLeft = 45;
   setInterval(() => {
-    if (Math.random() < 0.12) {
+    timeLeft--;
+    
+    // Update the tiny timer in the bottom right corner
+    if (timerEl) {
+      timerEl.textContent = timeLeft.toString().padStart(2, '0');
+    }
+
+    // When the timer hits 0, trigger the anomaly
+    if (timeLeft <= 0) {
       drawTicks(GLYPHS);
       if (glitchSpan) glitchSpan.textContent = 'it unlocks everything.';
+      
+      // Reset the dial back to normal after exactly 1.5 seconds
       setTimeout(() => {
         drawTicks(NUMS);
         if (glitchSpan) glitchSpan.textContent = '';
-      }, 900);
+      }, 1500);
+
+      // Restart the countdown clock
+      timeLeft = 45;
     }
-  }, 6000);
+  }, 1000);
 
   /* ---- stat counters ---- */
   const statEls = document.querySelectorAll('.stat-num');
