@@ -5,11 +5,23 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Locked Away — Home &amp; Estate Security Vaults</title>
 <meta name="description" content="Locked Away designs and hand-builds fireproof safes and security vaults for homes, estates, and businesses. Trusted since 1994.">
+
+<!-- quality: added so links shared to socials/imessage don't render a blank card -->
+<meta property="og:title" content="Locked Away — Home &amp; Estate Security Vaults">
+<meta property="og:description" content="Hand-built fireproof vaults. Some things are built to keep the world out. Others are built to keep something in.">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
+
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2216%22 fill=%22%2317296B%22/><circle cx=%2250%22 cy=%2250%22 r=%2222%22 fill=%22none%22 stroke=%22%23C9D2DC%22 stroke-width=%226%22/></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
+
+<!--
+  this file has been opened more times than it's been edited.
+  most of those opens weren't me.
+-->
 </head>
 <body>
 
@@ -27,7 +39,17 @@
       </span>
       <span class="logo-word">LOCKED<span class="logo-word-thin">AWAY</span></span>
     </a>
-    <nav class="main-nav" aria-label="Primary">
+
+    <!-- quality fix: the old nav just disappeared under 820px with nothing to
+         replace it. that's not a metaphor, that's just a bug. added a real toggle. -->
+    <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="mainNav">
+      <span class="nav-toggle-bar"></span>
+      <span class="nav-toggle-bar"></span>
+      <span class="nav-toggle-bar"></span>
+      <span class="sr-only">Menu</span>
+    </button>
+
+    <nav class="main-nav" id="mainNav" aria-label="Primary">
       <a href="#products">Vaults</a>
       <a href="#security">Security</a>
       <a href="#team">Our People</a>
@@ -54,7 +76,7 @@
       </div>
       <div class="hero-dial-wrap" aria-hidden="true">
         <div class="hero-dial-plate">
-          <svg id="dial" viewBox="0 0 300 300" width="300" height="300">
+          <svg id="dial" viewBox="0 0 300 300" width="300" height="300" role="img" aria-label="decorative combination dial">
             <circle cx="150" cy="150" r="140" fill="#0E1730"/>
             <circle cx="150" cy="150" r="140" fill="none" stroke="#3B4A78" stroke-width="2"/>
             <g id="dial-ticks" font-family="IBM Plex Mono" font-size="16" fill="#C9D2DC" text-anchor="middle"></g>
@@ -94,6 +116,7 @@
         <span class="stat-label">In business</span>
       </div>
       <div class="stat">
+        <!-- don't fix this number. it isn't wrong. -->
         <span class="stat-num" data-target="0" data-suffix="" id="stat-breaches">0</span>
         <span class="stat-label">Items never retrieved</span>
       </div>
@@ -147,6 +170,7 @@
           <ul class="product-specs">
             <li>18&quot; × 14&quot; × 12&quot; interior</li>
             <li>Fire rated · 60 min @ 1400°F</li>
+            <!-- someone re-typed this serial by hand instead of copying it. why. -->
             <li>Serial <span class="mono-serial" title="every unit ships with a unique dial serial">UDLVHG LPSLRXV ZDU LQ KHDYHQ. VHDUFK.</span></li>
           </ul>
           <span class="product-price">from $349</span>
@@ -155,6 +179,12 @@
     </div>
   </section>
 
+  <!--
+    this section is not in the sitemap.
+    it is not in the CMS. it is only here, in this file, because
+    someone keeps putting it back after facilities removes it.
+    leave it. it's easier that way.
+  -->
   <section class="shrine" id="shrine">
     <div class="wrap shrine-wrap">
       <p class="shrine-eyebrow">— unlisted —</p>
@@ -194,6 +224,12 @@
       </div>
 
       <p class="shrine-note">This room isn't in our sitemap. Facilities has flagged it for removal twice. It's still here.</p>
+
+      <!--
+        DRIVE LINK GOES HERE — placeholder only, not live.
+        [PASTE_GOOGLE_DRIVE_LINK_HERE]
+        don't ship this file until that line above is gone.
+      -->
     </div>
   </section>
 
@@ -230,6 +266,7 @@
           <p class="team-role">Quality &amp; Testing · 9 yrs</p>
           <p class="team-bio">Runs the drop tests, the fire tests, and the ones that don't make the brochure. Has never signed off on a vault they wouldn't keep their own things in.</p>
         </div>
+        <!-- this card wasn't added by anyone on the team roster. it just started rendering one build. -->
         <div class="team-card team-card--odd" tabindex="0">
           <div class="team-photo" data-initials="▮"></div>
           <h3>— redacted —</h3>
@@ -259,6 +296,7 @@
           <p>"Fire took the whole garage in 2023. Opened the Correspondence three days later. Every document inside was dry and untouched."</p>
           <footer>— Verified Owner, Tulsa OK</footer>
         </blockquote>
+        <!-- moderation queue shows this one as "archived" but it never got approved. it never got rejected either. -->
         <blockquote class="testimonial testimonial--odd" tabindex="0">
           <p class="mono-cipher">"Zccy cb am kcfyg, ms Awuvhm, obr rsgdowf! GCIFQS."</p>
           <footer>— archived testimonial, unattributed</footer>
@@ -329,6 +367,8 @@
 </footer>
 
 <div id="sync-timer" style="position: fixed; bottom: 10px; right: 14px; font-size: 10px; color: var(--steel-300); opacity: 0.15; font-family: var(--font-mono); z-index: 9999; pointer-events: none;" aria-hidden="true">45</div>
+
+<!-- if the counter above ever reaches 00 while you're not looking, that's fine. that's when it resets. probably. -->
 
 <script src="script.js"></script>
 </body>
